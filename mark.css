@@ -1,0 +1,630 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300..800&display=swap');
+
+.mathBlock {
+    font-size: 18px;
+    line-height: 1.6;
+    display: inline-block;
+    font-weight: 500;
+    font-family: "Times New Roman", serif;
+}
+
+.fraction {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.9em;
+    margin: 0 4px;
+    vertical-align: middle;
+}
+
+.fraction .top {
+    border-bottom: 1px solid currentColor;
+    padding: 0 4px;
+}
+
+.fraction .bottom {
+    padding: 0 4px;
+}
+
+.sqrt {
+    display: inline-flex;
+    align-items: flex-end;
+    vertical-align: middle;
+}
+
+.sqrt .root {
+    font-size: 3em;
+    font-weight: 100;
+    line-height: 1;
+    position: relative;
+    top: 2px;
+}
+
+.sqrt .radicand {
+    position: relative;
+
+    /* Faz a barra começar um pouco sobre o √ */
+    margin-left: -0.15em;
+
+    padding: 0.1px 0.4em 8px 0.3em;
+    font-size: 22px;
+}
+
+.sqrt .radicand .fraction {
+    position: relative;
+    top: 0.79em;
+    font-size: 16px;
+}
+
+.sqrt .radicand::after {
+    content: "";
+    position: absolute;
+
+    /* Faz a barra invadir a área do √ */
+    left: 0.2em;
+    right: 0;
+    bottom: 2.24em;
+    border-top: 2.3px solid currentColor;
+}
+
+.sqrt .fraction {
+    font-size: 0.8em;
+}
+
+.sqrt .radicand sup,
+.sqrt .radicand sub {
+    position: relative;
+    left: 3.1px;
+    font-size: 0.5em;
+}
+
+sup {
+    position: relative;
+    bottom: 5px;
+    right: 2.6px;
+    font-size: 10px;
+    font-weight: 400;
+    font-family: sans-serif !important;
+}
+
+.nthRoot {
+    position: relative;
+}
+
+.nthRoot .index {
+    position: absolute;
+
+    /* ajuste fino */
+    left: 0.6em;
+    top: 0.6em;
+    font-weight: 400;
+    font-style: italic;
+    font-size: 0.8em;
+    line-height: 1;
+    font-family: sans-serif;
+}
+
+/* =========================
+   SINGLE IMAGE
+========================= */
+
+.mdImage {
+    display: block;
+
+    max-width: auto;
+    max-height: 420px;
+
+    width: auto;
+    height: auto;
+
+    margin: 10px 0;
+
+    border-radius: 18px;
+
+    object-fit: contain;
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   IMAGE CAROUSEL
+========================= */
+
+.imageCarousel {
+    display: flex;
+
+    gap: 10px;
+
+    overflow-x: auto;
+    overflow-y: hidden;
+
+    padding: 6px 0;
+
+    scroll-behavior: smooth;
+
+    scroll-snap-type: x proximity;
+
+    -webkit-overflow-scrolling: touch;
+
+    scrollbar-width: none;
+}
+
+.imageCarousel::-webkit-scrollbar {
+    display: none;
+}
+
+.galleryImage {
+    flex: 0 0 auto;
+
+    max-height: 280px;
+
+    width: auto;
+    height: auto;
+
+    object-fit: contain;
+
+    border-radius: 18px;
+
+    scroll-snap-align: start;
+
+    cursor: pointer;
+
+    transition: transform .15s ease;
+}
+
+.galleryImage:hover {
+    transform: scale(1.02);
+}
+
+.imageViewer {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.85);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .2s;
+
+    z-index: 999999;
+}
+
+.imageViewer.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.imageViewerContent {
+    position: relative;
+
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.viewerImage {
+    max-width: 90vw;
+    max-height: 90vh;
+
+    border-radius: 18px;
+
+    display: block;
+}
+
+.closeViewer,
+.downloadImage {
+    position: absolute;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.6);
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+
+    backdrop-filter: blur(8px);
+}
+
+.closeViewer {
+    top: -55px;
+    right: 0;
+}
+
+.downloadImage {
+    bottom: -55px;
+    right: 0;
+
+    text-decoration: none;
+}
+
+.closeViewer:hover,
+.downloadImage:hover {
+    background: rgba(255,255,255,.2);
+}
+
+/* =========================
+   VIDEO
+========================= */
+
+.videoContainer {
+    margin: 12px 0;
+}
+
+.mdVideo {
+    display: block;
+
+    width: 100%;
+    max-width: 700px;
+    max-height: 500px;
+
+    background: #000;
+}
+
+.videoViewer {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.9);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .2s;
+
+    z-index: 999999;
+}
+
+.videoViewer.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.videoViewerContent {
+    position: relative;
+
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.viewerVideo {
+    max-width: 90vw;
+    max-height: 90vh;
+
+    border-radius: 18px;
+
+    background: #000;
+}
+
+.closeVideoViewer,
+.downloadVideo {
+    position: absolute;
+
+    width: 46px;
+    height: 46px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.6);
+
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 20px;
+
+    backdrop-filter: blur(8px);
+}
+
+.closeVideoViewer {
+    top: -55px;
+    right: 0;
+}
+
+.downloadVideo {
+    bottom: -55px;
+    right: 0;
+
+    text-decoration: none;
+}
+
+.closeVideoViewer:hover,
+.downloadVideo:hover {
+    background: rgba(255,255,255,.2);
+}
+
+.youtubeContainer {
+    margin: 12px 0;
+}
+
+.youtubeFrame {
+    width: 100%;
+    max-width: 700px;
+    aspect-ratio: 16 / 9;
+
+    border-radius: 18px;
+
+    display: block;
+}
+
+.header-codeBlock {
+    display: flex;
+    position: relative;
+    width: 98%;
+    height: 30px;
+    background: #f2f2f2;
+    border: solid 1px #cccccc;
+    border-bottom: none;
+    border-radius: 20px 20px 0 0;
+    padding: 0 0 10px 10px;
+}
+
+.header-codeBlock h4 {
+    position: relative;
+    bottom: 14px;
+    left: 3px;
+    font-size: 17px;
+}
+
+.copyCodeBtn {
+    position: absolute;
+    top: 8px;
+    left: 355px;
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.codeBlock {
+    padding: 8px 0 8px 16px;
+    width: 96.6%;
+    background: #f2f2f2;
+    border: solid 1px #cccccc;
+    border-top: none;
+    border-radius: 0 0 20px 20px;
+    white-space: pre-wrap;
+    font-size: 13px;
+    font-family: "JetBrains Mono", monospace;
+    font-variant-ligatures: contextual;
+    font-feature-settings: "liga" 1, "calt" 1;
+}
+
+.runCodeBtn {
+    position: absolute;
+    top: 4px;
+    left: 310px;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    cursor: pointer;
+}
+
+.runnerModal {
+    position: fixed;
+    inset: 0;
+
+    background: rgba(0,0,0,.75);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    opacity: 0;
+    visibility: hidden;
+
+    transition: .2s;
+
+    z-index: 999999;
+}
+
+.runnerModal.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.runnerBox {
+    position: relative;
+
+    width: 420px;
+    max-height: 70vh;
+
+    background: #1e1e1e;
+
+    border-radius: 10px;
+
+    padding: 12px;
+
+    overflow: auto;
+}
+
+.runnerBox.small h3 {
+    position: relative;
+    bottom: 20px;
+    font-family: sans-serif;
+}
+
+.runnerBox.small {
+    width: 80vw;
+    max-height: 40vh;
+}
+
+/* HTML maior */
+.runnerModal[data-type="html"] .runnerBox {
+    width: 900px;
+    max-height: 90vh;
+    background: transparent;
+}
+
+.runnerContent {
+    color: white;
+    font-family: monospace;
+}
+
+/* console style */
+.consoleBox .log {
+    margin-bottom: 6px;
+}
+
+/* close button */
+.closeRunner {
+    position: absolute;
+    top: -50px;
+    right: 0;
+
+    width: 44px;
+    height: 44px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: rgba(0,0,0,.6);
+    color: white;
+
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.htmlFrame {
+    width: 100%;
+    height: 80vh;
+
+    border: none;
+    border-radius: 5px;
+
+    background: white;
+}
+
+.consoleLine {
+    position: relative;
+    bottom: 20px;
+    border: solid 1px #333;
+}
+
+.markTableWrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin: 16px 0;
+    border-radius: 12px;
+}
+
+.markTable {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+    line-height: 1.5;
+    background: transparent;
+}
+
+.markTable th,
+.markTable td {
+    padding: 12px 16px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, .08);
+}
+
+.markTable th {
+    border-bottom: solid 1px #dbdbdb;
+    font-weight: 600;
+    background: rgba(255, 255, 255, .04);
+}
+
+.markTable tr:last-child td {
+    border-bottom: none;
+}
+
+.markTable tr:hover td {
+    background: rgba(255, 255, 255, .03);
+}
+
+.downloadBox {
+    display: flex;
+    position: relative;
+    width: 230px;
+    padding: 2px 0 0 25px;
+    border: solid 1px #aaaaaa;
+    border-radius: 8px;
+    background: #f4f4f4;
+}
+
+.downloadBox i {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    font-size: 30px;
+}
+
+.downloadBox h3 {
+    position: relative;
+    bottom: 7px;
+    left: 40px;
+    font-size: 21px;
+}
+
+.downloadBox p {
+    position: absolute;
+    bottom: -4px;
+    left: 65px;
+    font-size: 15px;
+    color: #666;
+}
+
+.downloadBox button {
+    position: absolute;
+    opacity: 0;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 50;
+}
+
+.link {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 3px 8px;
+
+    color: #7ab7ff;
+    background: rgba(122, 183, 255, .15);
+
+    border-radius: 5px;
+
+    text-decoration: none;
+    font-weight: 500;
+
+    transition: .2s;
+}
+
+.link:hover {
+    background: rgba(122, 183, 255, .25);
+}
