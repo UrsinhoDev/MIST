@@ -47,7 +47,7 @@ class Mark {
 
         // LISTS (simple flatten)
         text = text.replace(/<li>(.*?)<\/li>/g, '- $1')
-        text = text.replace(/<\/?\(ul|ol)>/g, '')
+        text = text.replace(/<\/?(?:ul|ol)>/g, '')
 
         // CLEAN UP REMAINING TAGS
         text = text.replace(/<[^>]+>/g, '')
